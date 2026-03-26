@@ -192,7 +192,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
 <!-- VERTICAL SIDEBAR -->
 <div id="sb">
   <div class="tb t0" data-tab="myMenu"   onclick="setTab(this)">☆</div>
-  <div class="tb t1" data-tab="cam0"     onclick="setTab(this)">⌂</div>
+  <div class="tb t1" data-tab="cam0"     onclick="setTab(this)">🎬</div>
   <div class="tb t2 active" data-tab="shooting" onclick="setTab(this)">📷</div>
   <div class="tb t3" data-tab="exposure" onclick="setTab(this)">±</div>
   <div class="tb t4" data-tab="focus"    onclick="setTab(this)">AF<br>MF</div>
@@ -732,7 +732,223 @@ focus:{
 
 // ─── PLACEHOLDER TABS (add data as photos come in) ───
 myMenu:   {title:{jp:'マイメニュー',en:'My Menu'},cats:[]},
-cam0:     {title:{jp:'カメラ設定1',en:'Camera Settings'},cats:[]},
+cam0:     {title:{jp:'動画モード',en:'Movie Mode'},cats:[
+
+  // ── 1. Image Quality / Recording (Video) ──
+  {num:1,name:{jp:'画質/記録（動画固有）',en:'Image Quality/Recording (Video)'},page:'5-6/61',items:[
+    {name:{jp:'▶ 記録方式',en:'▶ Recording Format'},val:'XAVC HS 4K',type:'opt',
+      opts:[{jp:'XAVC HS 4K',en:'XAVC HS 4K',s:1},{jp:'XAVC S 4K',en:'XAVC S 4K'},{jp:'XAVC S HD',en:'XAVC S HD'},{jp:'XAVC S-I 4K',en:'XAVC S-I 4K'},{jp:'XAVC S-I HD',en:'XAVC S-I HD'}]},
+    {name:{jp:'▶ 動画設定',en:'▶ Movie Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'記録フレームレート',en:'Recording Frame Rate'},val:'24p',type:'opt',
+        opts:[{jp:'119.88p',en:'119.88p'},{jp:'59.94p',en:'59.94p'},{jp:'29.97p',en:'29.97p'},{jp:'23.98p/24p',en:'23.98p/24p',s:1}]},
+      {name:{jp:'記録設定',en:'Recording Setting'},val:'100M 4:2:2 10bit',type:'val'},
+    ]},
+    {name:{jp:'スロー&クイック設定',en:'S&Q Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'記録フレームレート',en:'Recording Frame Rate'},val:'24p',type:'val'},
+      {name:{jp:'撮影フレームレート',en:'Capture Frame Rate'},val:'120fps',type:'val'},
+      {name:{jp:'記録設定',en:'Recording Setting'},val:'100M 4:2:2 10bit',type:'val'},
+    ]},
+    {name:{jp:'タイムラプス設定',en:'Time-lapse Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'フレームレート設定',en:'Frame Rate Setting'},val:'▶',type:'act',
+        note:{jp:'記録フレームレートを設定します',en:'Set the recording frame rate'}},
+      {name:{jp:'記録設定',en:'Recording Setting'},val:'100M 4:2:2 10bit',type:'val'},
+      {name:{jp:'ビデオライト設定',en:'Video Light Setting'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    ]},
+    {name:{jp:'4K動画画角優先',en:'4K Movie Angle Priority'},val:{jp:'入',en:'On'},type:'opt',
+      opts:[{jp:'入',en:'On',s:1},{jp:'切',en:'Off'}]},
+    {name:{jp:'Log撮影設定',en:'Log Shooting Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'Log撮影',en:'Log Shooting'},val:{jp:'入（Flexible ISO）',en:'On (Flexible ISO)'},type:'opt',
+        opts:[{jp:'切',en:'Off'},{jp:'入（Flexible ISO）',en:'On (Flexible ISO)',s:1}]},
+      {name:{jp:'色域',en:'Color Gamut'},val:'S-Gamut3.Cine/S-Log3',type:'opt',
+        opts:[{jp:'S-Gamut3.Cine/S-Log3',en:'S-Gamut3.Cine/S-Log3',s:1},{jp:'S-Gamut3/S-Log3',en:'S-Gamut3/S-Log3'},{jp:'S-Log2',en:'S-Log2'}]},
+      {name:{jp:'LUTファイルの埋め込み',en:'LUT File Embedding'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    ]},
+    {name:{jp:'プロキシー設定',en:'Proxy Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'プロキシー記録',en:'Proxy Recording'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+      {name:{jp:'プロキシー記録方式',en:'Proxy Recording Format'},val:'XAVC S HD',type:'opt',
+        opts:[{jp:'XAVC S HD',en:'XAVC S HD',s:1}]},
+      {name:{jp:'プロキシー記録設定',en:'Proxy Recording Setting'},val:'6M 4:2:0 8bit',type:'val'},
+    ]},
+    {name:{jp:'▶ レンズ補正',en:'▶ Lens Correction'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'周辺光量補正',en:'Shading Correction'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'自動',en:'Auto'},{jp:'切',en:'Off',s:1}]},
+      {name:{jp:'倍率色収差補正',en:'Chromatic Aberration Correction'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'自動',en:'Auto'},{jp:'切',en:'Off',s:1}]},
+      {name:{jp:'歪曲収差補正',en:'Distortion Correction'},val:{jp:'オート',en:'Auto'},type:'opt',
+        opts:[{jp:'自動',en:'Auto',s:1},{jp:'切',en:'Off'}]},
+      {name:{jp:'ブリージング補正',en:'Breathing Correction'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    ]},
+  ]},
+
+  // ── 2. Shooting Mode (Video) ──
+  {num:2,name:{jp:'撮影モード（動画）',en:'Shooting Mode (Video)'},page:'9/61',items:[
+    {name:{jp:'露出制御方式',en:'Exposure Control Method'},val:{jp:'P/A/S/Mモード',en:'P/A/S/M Mode'},type:'opt',
+      opts:[{jp:'P/A/S/Mモード',en:'P/A/S/M Mode',s:1},{jp:'シーンセレクション',en:'Scene Selection'}]},
+    {name:{jp:'MR 撮影設定呼び出し',en:'MR Recall Shooting Settings'},val:'',type:'act',
+      note:{jp:'登録した動画撮影設定を呼び出します（スロット1, 2, 3, M1〜M4）',en:'Recall registered video shooting settings (Slot 1, 2, 3, M1–M4)'}},
+    {name:{jp:'MR 撮影設定登録',en:'MR Register Shooting Settings'},val:'',type:'act',
+      note:{jp:'現在の動画設定を登録します（例: ▶A / AF-C / F4.0 / ISO AUTO / XAVC HS 4K 60p / 4:2:0 10bit / AWB / S-Log3）',en:'Register current video settings to a memory slot (e.g. ▶A / AF-C / F4.0 / ISO AUTO / XAVC HS 4K 60p / 4:2:0 10bit / AWB / S-Log3)'}},
+    {name:{jp:'撮影モード',en:'Shooting Mode'},val:{jp:'絞り優先',en:'Aperture Priority'},type:'val'},
+    {name:{jp:'S&Q撮影モード',en:'S&Q Shooting Mode'},val:'',type:'act',
+      note:{jp:'スロー&クイックモーション撮影に切り替えます',en:'Switch to Slow & Quick Motion shooting mode'}},
+    {name:{jp:'MR 登録/呼出メディア',en:'MR Register/Recall Media'},val:{jp:'スロット1',en:'Slot 1'},type:'opt',
+      opts:[{jp:'スロット1',en:'Slot 1',s:1},{jp:'スロット2',en:'Slot 2'}]},
+  ]},
+
+  // ── 3. Audio Recording ──
+  {num:3,name:{jp:'音声記録',en:'Audio Recording'},page:'11/61',items:[
+    {name:{jp:'音声記録',en:'Audio Recording'},val:{jp:'入',en:'On'},type:'opt',
+      opts:[{jp:'入',en:'On',s:1},{jp:'切',en:'Off'}]},
+    {name:{jp:'録音レベル',en:'Rec Level'},val:'18',type:'act',
+      note:{jp:'0〜31のスライダーで録音レベルを調整（CH1/CH2表示、STBY中に設定可）',en:'Adjust recording level via 0–31 slider (CH1/CH2 metering shown; adjustable in STBY)'}},
+    {name:{jp:'音声出力タイミング',en:'Audio Output Timing'},val:{jp:'ライブ',en:'Live'},type:'opt',
+      opts:[{jp:'ライブ',en:'Live',s:1},{jp:'リップシンク',en:'Lip Sync'}]},
+    {name:{jp:'音声ノイズ低減設定',en:'Audio Noise Reduction'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'風音低減: 内蔵マイク',en:'Wind Noise Reduction: Built-in Mic'},val:{jp:'オート',en:'Auto'},type:'opt',
+        opts:[{jp:'オート',en:'Auto',s:1},{jp:'入',en:'On'},{jp:'切',en:'Off'}]},
+      {name:{jp:'風音低減: 外部マイク',en:'Wind Noise Reduction: Ext. Mic'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+      {name:{jp:'ノイズカット: 内蔵マイク',en:'Noise Cut: Built-in Mic'},val:{jp:'入',en:'On'},type:'opt',
+        opts:[{jp:'入',en:'On',s:1},{jp:'切',en:'Off'}]},
+      {name:{jp:'ノイズカット: 外部マイク',en:'Noise Cut: Ext. Mic'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    ]},
+    {name:{jp:'miシューの音声設定',en:'MI Shoe Audio Settings'},val:'—',type:'act',
+      note:{jp:'マルチインターフェースシューに対応オーディオ機器が必要（未装着時は設定不可）',en:'Requires compatible audio device in Multi Interface Shoe (unavailable without attached device)'}},
+  ]},
+
+  // ── 4. TC/UB ──
+  {num:4,name:{jp:'TC/UB',en:'TC/UB'},page:'12/61',items:[
+    {name:{jp:'Time Code Preset',en:'Time Code Preset'},val:'00:00:00.00',type:'act',
+      note:{jp:'タイムコードの開始値を設定します（形式: HH:MM:SS.FF）',en:'Set timecode start value (format: HH:MM:SS.FF)'}},
+    {name:{jp:'User Bit Preset',en:'User Bit Preset'},val:'00 00 00 00',type:'act',
+      note:{jp:'ユーザービットの値を16進数で設定します',en:'Set User Bit value in hexadecimal'}},
+    {name:{jp:'Time Code Format',en:'Time Code Format'},val:'DF',type:'opt',
+      opts:[{jp:'DF',en:'DF (Drop Frame)',s:1},{jp:'NDF',en:'NDF (Non-Drop Frame)'}]},
+    {name:{jp:'Time Code Run',en:'Time Code Run'},val:'Rec Run',type:'opt',
+      opts:[{jp:'Rec Run',en:'Rec Run',s:1},{jp:'Free Run',en:'Free Run'}]},
+    {name:{jp:'Time Code Make',en:'Time Code Make'},val:'Preset',type:'opt',
+      opts:[{jp:'Preset',en:'Preset',s:1},{jp:'Regenerate',en:'Regenerate'}]},
+    {name:{jp:'User Bit Time Rec',en:'User Bit Time Rec'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+  ]},
+
+  // ── 5. Image Stabilization (Video differences) ──
+  {num:5,name:{jp:'手ブレ補正（動画）',en:'Image Stabilization (Video)'},page:'13/61',items:[
+    {name:{jp:'▶ 手ブレ補正',en:'▶ Image Stabilization'},val:{jp:'アクティブ',en:'Active'},type:'opt',
+      opts:[{jp:'ダイナミックアクティブ',en:'Dynamic Active'},{jp:'アクティブ',en:'Active',s:1},{jp:'スタンダード',en:'Standard'},{jp:'切',en:'Off'}]},
+    {name:{jp:'手ブレ補正調整',en:'IS Adjustment'},val:{jp:'オート',en:'Auto'},type:'opt',
+      opts:[{jp:'オート',en:'Auto',s:1},{jp:'マニュアル',en:'Manual'}]},
+    {name:{jp:'焦点距離',en:'Focal Length'},val:'—',type:'val'},
+    {name:{jp:'フレーミング補正',en:'Framing Correction'},val:{jp:'切',en:'Off'},type:'act',
+      note:{jp:'ライブビュー上でフレーミング補正の範囲を確認しながら調整します（動画モードのみ）',en:'Adjust framing correction while viewing crop range on live image (video mode only)'}},
+  ]},
+
+  // ── 6. Zoom (Video differences) ──
+  {num:6,name:{jp:'ズーム（動画）',en:'Zoom (Video)'},page:'14/61',items:[
+    {name:{jp:'ズーム範囲',en:'Zoom Range'},val:{jp:'光学ズームのみ',en:'Optical Only'},type:'opt',
+      opts:[{jp:'光学ズームのみ',en:'Optical Only',s:1},{jp:'超解像ズーム',en:'Super Resolution Zoom'},{jp:'デジタルズーム',en:'Digital Zoom'}]},
+  ]},
+
+  // ── 7. Shooting Display (Video) ──
+  {num:7,name:{jp:'撮影画面表示（動画）',en:'Shooting Display (Video)'},page:'15/61',items:[
+    {name:{jp:'グリッドライン表示',en:'Grid Line Display'},val:{jp:'入',en:'On'},type:'opt',
+      opts:[{jp:'入',en:'On',s:1},{jp:'切',en:'Off'}]},
+    {name:{jp:'グリッドラインの種類',en:'Grid Line Type'},val:{jp:'3分割',en:'Rule of Thirds'},type:'opt',
+      opts:[{jp:'3分割',en:'Rule of Thirds',s:1},{jp:'黄金分割',en:'Golden Ratio'},{jp:'正方形',en:'Square'},{jp:'対角',en:'Diagonal'}]},
+    {name:{jp:'記録中の強調表示',en:'Highlight During Recording'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+  ]},
+
+  // ── 8. Marker Display (Video) ──
+  {num:7,name:{jp:'マーカー表示（動画）',en:'Marker Display (Video)'},page:'16/61',items:[
+    {name:{jp:'マーカー表示',en:'Marker Display'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    {name:{jp:'センターマーカー',en:'Center Marker'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    {name:{jp:'▶■ アスペクトマーカー',en:'▶■ Aspect Marker'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'切',en:'Off',s:1},{jp:'9:16',en:'9:16'},{jp:'4:5',en:'4:5'},{jp:'1:1',en:'1:1'},{jp:'4:3',en:'4:3'},{jp:'13:9',en:'13:9'}]},
+    {name:{jp:'セーフティゾーン',en:'Safety Zone'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'切',en:'Off',s:1},{jp:'80%',en:'80%'},{jp:'90%',en:'90%'}]},
+    {name:{jp:'ガイドフレーム',en:'Guide Frame'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+  ]},
+
+  // ── 8. Shooting Options (Video) ──
+  {num:8,name:{jp:'撮影オプション（動画）',en:'Shooting Options (Video)'},page:'17/61',items:[
+    {name:{jp:'▶■ セルフタイマー',en:'▶■ Self-timer'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'切',en:'Off',s:1},{jp:'2秒',en:'2s'},{jp:'5秒',en:'5s'},{jp:'10秒',en:'10s'}]},
+    {name:{jp:'オートフレーミング設定',en:'Auto Framing Settings'},val:'▶',type:'sub',page:'1/1',items:[
+      {name:{jp:'オートフレーミング',en:'Auto Framing'},val:{jp:'切',en:'Off'},type:'opt',
+        opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+      {name:{jp:'フレーミング動作モード',en:'Framing Operation Mode'},val:{jp:'自動開始',en:'Auto Start'},type:'opt',
+        opts:[{jp:'トラッキング時に開始',en:'Start on Tracking'},{jp:'自動開始',en:'Auto Start',s:1},{jp:'自動開始(15秒切換)',en:'Auto Start (15s Switch)'},{jp:'自動開始(30秒切換)',en:'Auto Start (30s Switch)'}]},
+      {name:{jp:'クロップレベル',en:'Crop Level'},val:{jp:'中',en:'Mid'},type:'opt',
+        opts:[{jp:'大',en:'Large'},{jp:'中',en:'Mid',s:1},{jp:'小',en:'Small'}]},
+      {name:{jp:'フレーミング追従速度',en:'Framing Follow Speed'},val:'3',type:'opt',
+        opts:[{jp:'1（遅い）',en:'1 (Slow)'},{jp:'2',en:'2'},{jp:'3',en:'3',s:1},{jp:'4',en:'4'},{jp:'5（速い）',en:'5 (Fast)'}]},
+      {name:{jp:'動画記録/ストリーミング',en:'Movie Rec / Streaming'},val:{jp:'クロップする',en:'Crop'},type:'opt',
+        opts:[{jp:'クロップする',en:'Crop',s:1},{jp:'クロップしない',en:'Do Not Crop'}]},
+      {name:{jp:'HDMI出力',en:'HDMI Output'},val:{jp:'クロップしない',en:'Do Not Crop'},type:'opt',
+        opts:[{jp:'クロップする',en:'Crop'},{jp:'クロップしない',en:'Do Not Crop',s:1}]},
+    ]},
+    {name:{jp:'静止画自動作成',en:'Still Image Auto Creation'},val:{jp:'切',en:'Off'},type:'opt',
+      opts:[{jp:'入',en:'On'},{jp:'切',en:'Off',s:1}]},
+    {name:{jp:'静止画作成後のS&Q',en:'S&Q After Still Creation'},val:{jp:'保持する',en:'Keep'},type:'opt',
+      opts:[{jp:'自動削除',en:'Auto Delete'},{jp:'保持する',en:'Keep',s:1}]},
+  ]},
+
+  // ── 10. Exposure (Video) ──
+  {num:10,name:{jp:'露出（動画固有）',en:'Exposure (Video)'},page:'18/61',items:[
+    {name:{jp:'オートスローシャッター',en:'Auto Slow Shutter'},val:{jp:'入',en:'On'},type:'opt',
+      opts:[{jp:'入',en:'On',s:1},{jp:'切',en:'Off'}]},
+  ]},
+
+  // ── 11. Color/Tone (Video) ──
+  {num:11,name:{jp:'カラー/トーン（動画固有）',en:'Color/Tone (Video)'},page:'22/61',items:[
+    {name:{jp:'LUT選択',en:'LUT Selection'},val:'S-Log3',type:'opt',
+      opts:[{jp:'S-Log3',en:'S-Log3',s:1},{jp:'s709',en:'s709'},{jp:'709(800%)',en:'709 (800%)'},{jp:'User1',en:'User1'},{jp:'User2',en:'User2'},{jp:'User3',en:'User3'},{jp:'User4',en:'User4'},{jp:'User5',en:'User5'},{jp:'User6',en:'User6'}]},
+    {name:{jp:'ユーザーLUTの管理',en:'User LUT Management'},val:'▶',type:'sub',items:[
+      {name:{jp:'登録/編集',en:'Register/Edit'},val:'',type:'act',
+        note:{jp:'ユーザーLUTを登録・編集します',en:'Register and edit user LUTs'}},
+      {name:{jp:'全削除',en:'Delete All'},val:'',type:'act',
+        note:{jp:'登録されているLUTファイルを全て削除します',en:'Delete all registered LUT files'}},
+    ]},
+  ]},
+
+  // ── 12. AF/MF (Video) ──
+  {num:12,name:{jp:'AF/MF（動画固有）',en:'AF/MF (Video)'},page:'24/61',items:[
+    {name:{jp:'フォーカスモード',en:'Focus Mode'},val:{jp:'コンティニュアスAF',en:'Continuous AF'},type:'opt',
+      opts:[{jp:'コンティニュアスAF',en:'Continuous AF',s:1},{jp:'マニュアルフォーカス',en:'Manual Focus'}]},
+    {name:{jp:'AFトランジション速度',en:'AF Transition Speed'},val:'5',type:'opt',
+      opts:[{jp:'1',en:'1 (Slow)'},{jp:'2',en:'2'},{jp:'3',en:'3'},{jp:'4',en:'4'},{jp:'5',en:'5',s:1},{jp:'6',en:'6'},{jp:'7',en:'7 (Fast)'}]},
+    {name:{jp:'AF乗り移り感度',en:'AF Subject Shift Sensitivity'},val:{jp:'5(敏感)',en:'5 (Responsive)'},type:'opt',
+      opts:[{jp:'1(粘る)',en:'1 (Sticky)'},{jp:'2',en:'2'},{jp:'3',en:'3'},{jp:'4',en:'4'},{jp:'5(敏感)',en:'5 (Responsive)',s:1}]},
+  ]},
+
+  // ── 13. HDMI Output Settings (Video) ──
+  {num:13,name:{jp:'HDMI出力設定（動画固有）',en:'HDMI Output Settings (Video)'},page:'59/61',items:[
+    {name:{jp:'出力解像度',en:'Output Resolution'},val:{jp:'1080p',en:'1080p'},type:'opt',
+      opts:[{jp:'オート',en:'Auto'},{jp:'2160p',en:'2160p'},{jp:'1080p',en:'1080p',s:1},{jp:'1080i',en:'1080i'}]},
+    {name:{jp:'RECコントロール',en:'REC Control'},val:'—',type:'act',
+      note:{jp:'外部レコーダーへのRECコントロール信号出力設定',en:'REC control signal output to external recorder'}},
+    {name:{jp:'4ch音声の出力',en:'4ch Audio Output'},val:{jp:'CH1/CH2',en:'CH1/CH2'},type:'opt',
+      opts:[{jp:'CH1/CH2',en:'CH1/CH2',s:1},{jp:'CH3/CH4',en:'CH3/CH4'}]},
+  ]},
+
+  // ── 14. USB Streaming (Video) ──
+  {num:14,name:{jp:'USBストリーミング（動画固有）',en:'USB Streaming (Video)'},page:'38/61',items:[
+    {name:{jp:'出力解像度/フレームレート',en:'Output Resolution/Frame Rate'},val:{jp:'HD(1080p) 30p',en:'HD(1080p) 30p'},type:'opt',
+      opts:[{jp:'4K(2160p) 30p',en:'4K(2160p) 30p'},{jp:'4K(2160p) 15p',en:'4K(2160p) 15p'},{jp:'HD(1080p) 60p',en:'HD(1080p) 60p'},{jp:'HD(1080p) 30p',en:'HD(1080p) 30p',s:1},{jp:'HD(720p) 30p',en:'HD(720p) 30p'}]},
+    {name:{jp:'ストリーミング時の動画記録',en:'Movie Recording During Streaming'},val:{jp:'禁止',en:'Prohibit'},type:'opt',
+      opts:[{jp:'許可',en:'Allow'},{jp:'禁止',en:'Prohibit',s:1}]},
+  ]},
+
+]},
 playback: {title:{jp:'再生',en:'Playback'},cats:[
 
   // ── 1. Playback Target ──
@@ -1550,7 +1766,7 @@ const TB_COL={shooting:'#bb2f00',exposure:'#b85800',focus:'#b85800',
   playback:'#1144bb',network:'#116633',setup:'#775500',
   myMenu:'#2a2a2a',cam0:'#3a3a5a'};
 const TB_ICO={shooting:'📷',exposure:'±',focus:'AF<br>MF',
-  playback:'▶',network:'🌐',setup:'⚙',myMenu:'☆',cam0:'⌂'};
+  playback:'▶',network:'🌐',setup:'⚙',myMenu:'☆',cam0:'🎬'};
 
 let SX=[];  // flat search index
 function buildSX(){
